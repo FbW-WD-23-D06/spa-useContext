@@ -9,7 +9,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "features/navigation/layout/Layout.tsx";
 import { path } from "features/navigation/routing/path.ts";
 import NotFound from "pages/NotFound.tsx";
-import { AppContextProvider } from "./contexts/AppContext";
+import { ThemeContextProvider } from "./contexts/ThemeContext";
 
 const router = createBrowserRouter([
   {
@@ -42,8 +42,10 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <AppContextProvider> {/* Wrap the entire app with the AppContextProvider to be able to use the state from the provider throughout the app */}
+    <ThemeContextProvider>
+      {" "}
+      {/* Wrap the entire app with the ThemeContextProvider to be able to use the state from the provider throughout the app */}
       <RouterProvider router={router} fallbackElement={<p>loading..</p>} />
-    </AppContextProvider>
+    </ThemeContextProvider>
   </React.StrictMode>
 );

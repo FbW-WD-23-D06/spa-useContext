@@ -13,26 +13,26 @@ type Context = {
 };
 
 // Create a new context with the defined type
-// If the useAppContext hook is used outside of the AppContextProvider component, it will throw an error
-const AppContext = createContext<Context | null>(null);
+// If the useThemeContext hook is used outside of the ThemeContextProvider component, it will throw an error
+const ThemeContext = createContext<Context | null>(null);
 
-// Export a custom hook to access the AppContext.
+// Export a custom hook to access the ThemeContext.
 // This hook is used in the components which need to access the global states.
 // We can avoid create and use this hook by using the useContext hook directly in the components, but this is a good practice
 // to avoid to import the context in each component which need to access the global states
 
 // eslint-disable-next-line react-refresh/only-export-components
-export const useAppContext = () => useContext(AppContext);
+export const useThemeContext = () => useContext(ThemeContext);
 
-// Define the AppContextProvider component
+// Define the ThemeContextProvider component
 // The provider is needed just to wrap the components which need to access the global states
-export function AppContextProvider({ children }: { children: ReactNode }) {
+export function ThemeContextProvider({ children }: { children: ReactNode }) {
   const [darkMode, setDarkMode] = useState(false);
 
-  // Render the AppContextProvider component with the global state value and setter
+  // Render the ThemeContextProvider component with the global state value and setter
   return (
-    <AppContext.Provider value={{ darkMode, setDarkMode }}>
+    <ThemeContext.Provider value={{ darkMode, setDarkMode }}>
       {children} {/* Render the child components (all wrapped components) */}
-    </AppContext.Provider>
+    </ThemeContext.Provider>
   );
 }

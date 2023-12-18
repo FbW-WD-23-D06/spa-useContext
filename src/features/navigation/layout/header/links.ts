@@ -1,4 +1,4 @@
-import { path } from "../routing/path";
+import { path } from "../../routing/path";
 
 export const links = [
   { name: "Home", to: path.home },

@@ -1,3 +1,4 @@
+import DarkModeToggle from "./DarkModeToggle";
 import LinksList from "./LinksList";
 
 export default function Header() {
@@ -9,9 +10,10 @@ export default function Header() {
             className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1"
             id="mobile-menu-2"
           >
-           <LinksList />
+            <LinksList />
           </div>
         </div>
+        <DarkModeToggle />
       </nav>
     </header>
   );

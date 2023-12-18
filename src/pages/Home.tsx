@@ -1,7 +1,7 @@
-import { useAppContext } from "@/contexts/AppContext";
+import { useThemeContext } from "@/contexts/ThemeContext";
 
 export default function Home() {
-  const { darkMode } = useAppContext()!;
+  const { darkMode } = useThemeContext()!;
   console.log("darkMode:", darkMode);
   return (
     <div className="h-full">
