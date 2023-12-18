@@ -8,8 +8,8 @@ import {
 } from "react";
 
 type Context = {
-  globalState: string;
-  setGlobalState: Dispatch<SetStateAction<string>>;
+  darkMode: boolean;
+  setDarkMode: Dispatch<SetStateAction<boolean>>;
 };
 
 // Create a new context with the defined type
@@ -27,11 +27,11 @@ export const useAppContext = () => useContext(AppContext);
 // Define the AppContextProvider component
 // The provider is needed just to wrap the components which need to access the global states
 export function AppContextProvider({ children }: { children: ReactNode }) {
-  const [globalState, setGlobalState] = useState("global state");
+  const [darkMode, setDarkMode] = useState(false);
 
   // Render the AppContextProvider component with the global state value and setter
   return (
-    <AppContext.Provider value={{ globalState, setGlobalState }}>
+    <AppContext.Provider value={{ darkMode, setDarkMode }}>
       {children} {/* Render the child components (all wrapped components) */}
     </AppContext.Provider>
   );
