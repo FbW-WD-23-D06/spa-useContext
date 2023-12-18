@@ -43,7 +43,6 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <ThemeContextProvider>
-      {" "}
       {/* Wrap the entire app with the ThemeContextProvider to be able to use the state from the provider throughout the app */}
       <RouterProvider router={router} fallbackElement={<p>loading..</p>} />
     </ThemeContextProvider>
