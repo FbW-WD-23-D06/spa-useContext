@@ -1,5 +1,3 @@
-import {} from "react";
-
 export default function Register() {
   return (
     <div className="h-full">
