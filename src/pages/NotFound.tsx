@@ -4,7 +4,7 @@ export default function NotFound() {
   const location = useLocation();
   return (
     <>
-      <h1>404 NOT FOUND</h1>
+      <h1 className="text-center">404 NOT FOUND</h1>
       <p>{location.pathname} was not found</p>
     </>
   );
