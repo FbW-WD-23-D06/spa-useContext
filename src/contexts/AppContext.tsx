@@ -13,13 +13,14 @@ type Context = {
 };
 
 // Create a new context with the defined type
-const AppContext = createContext<Context>({
-  globalState: "",
-  setGlobalState: () => "",
-});
+// If the useAppContext hook is used outside of the AppContextProvider component, it will throw an error
+const AppContext = createContext<Context | null>(null);
 
-// Export a custom hook to access the AppContext
-// This hook is used in the components which need to access the global states
+// Export a custom hook to access the AppContext.
+// This hook is used in the components which need to access the global states.
+// We can avoid create and use this hook by using the useContext hook directly in the components, but this is a good practice
+// to avoid to import the context in each component which need to access the global states
+
 // eslint-disable-next-line react-refresh/only-export-components
 export const useAppContext = () => useContext(AppContext);
 
