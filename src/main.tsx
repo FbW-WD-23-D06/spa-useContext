@@ -2,10 +2,10 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
-import Home from '@/pages/Home'
-import Login from '@/pages/Login'
-import Profile from '@/pages/Profile'
-import Register from '@/pages/Register'
+import Home from 'pages/Home'
+import Login from 'pages/Login'
+import Profile from 'pages/Profile'
+import Register from 'pages/Register'
 
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
