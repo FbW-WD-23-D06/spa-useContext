@@ -22,7 +22,13 @@ const ThemeContext = createContext<Context | null>(null);
 // to avoid to import the context in each component which need to access the global states
 
 // eslint-disable-next-line react-refresh/only-export-components
-export const useThemeContext = () => useContext(ThemeContext);
+export const useThemeContext = () => {
+  const context = useContext(ThemeContext);
+  if (!context) {
+    throw new Error("ThemeContext must be used within a ThemeContextContextProvider");
+  }
+  return context;
+};
 
 // Define the ThemeContextProvider component
 // The provider is needed just to wrap the components which need to access the global states
