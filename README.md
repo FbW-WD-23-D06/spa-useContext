@@ -7,3 +7,5 @@
 - **global-theme**
 
 - **feature-context**
+
+- **useReducer-with-context**
