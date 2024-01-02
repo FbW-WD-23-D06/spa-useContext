@@ -1,8 +1,7 @@
-import { useThemeContext } from "@/contexts/ThemeContext";
+import { useUserContext } from "@/contexts/UserContext";
 
 export default function Home() {
-  const { darkMode } = useThemeContext()!;
-  console.log("darkMode:", darkMode);
+  const { dispatch } = useUserContext()!;
   return (
     <div className="h-full">
       <h1 className="text-center">Home</h1>

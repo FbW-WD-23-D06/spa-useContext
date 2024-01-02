@@ -24,8 +24,6 @@ type Action =
   | { type: "logout" }
   | { type: "updateLoggedUser"; payload: User };
 
-
-
 const reducer = (state: State, action: Action): State => {
   switch (action.type) {
     case "register":
@@ -49,6 +47,7 @@ const reducer = (state: State, action: Action): State => {
 type Context = {
   state: State;
   dispatch: Dispatch<Action>;
+  loggedUser: User | undefined;
 };
 
 const UserContext = createContext<Context | null>(null);
@@ -67,8 +66,10 @@ const initialState = { users: [], loggedUserID: null };
 export function UserContextProvider({ children }: { children: ReactNode }) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  const loggedUser = state.users.find((user) => user.id === state.loggedUserID);
+
   return (
-    <UserContext.Provider value={{ state, dispatch }}>
+    <UserContext.Provider value={{ state, dispatch, loggedUser }}>
       {children}
     </UserContext.Provider>
   );
