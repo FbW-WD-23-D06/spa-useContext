@@ -13,7 +13,7 @@ interface User {
 
 type loggedUserID = null | string;
 
-interface State {
+interface UserState {
   users: User[];
   loggedUserID: loggedUserID;
 }
@@ -24,7 +24,7 @@ type Action =
   | { type: "logout" }
   | { type: "updateLoggedUser"; payload: User };
 
-const reducer = (state: State, action: Action): State => {
+const reducer = (state: UserState, action: Action): UserState => {
   switch (action.type) {
     case "register":
       return { ...state, users: [...state.users, action.payload] };
@@ -45,7 +45,7 @@ const reducer = (state: State, action: Action): State => {
 };
 
 type Context = {
-  state: State;
+  userState: UserState;
   dispatch: Dispatch<Action>;
   loggedUser: User | undefined;
 };
@@ -64,12 +64,12 @@ export const useUserContext = () => {
 const initialState = { users: [], loggedUserID: null };
 
 export function UserContextProvider({ children }: { children: ReactNode }) {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [userState, dispatch] = useReducer(reducer, initialState);
 
-  const loggedUser = state.users.find((user) => user.id === state.loggedUserID);
+  const loggedUser = userState.users.find((user) => user.id === userState.loggedUserID);
 
   return (
-    <UserContext.Provider value={{ state, dispatch, loggedUser }}>
+    <UserContext.Provider value={{ userState, dispatch, loggedUser }}>
       {children}
     </UserContext.Provider>
   );

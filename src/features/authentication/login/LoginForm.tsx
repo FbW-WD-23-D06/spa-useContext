@@ -4,11 +4,11 @@ import { useUserContext } from "@/contexts/UserContext";
 export default function LoginForm() {
   const [userName, setUserName] = useState("");
   const [error, setError] = useState("");
-  const { dispatch, state } = useUserContext();
+  const { dispatch, userState } = useUserContext();
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const userID = state.users.find((user) => user.userName === userName)?.id;
+    const userID = userState.users.find((user) => user.userName === userName)?.id;
     if (!userID) {
       setError("User not found");
       return;
