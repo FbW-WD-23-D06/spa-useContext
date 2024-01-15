@@ -3,20 +3,11 @@ import { useUserContext } from "@/contexts/UserContext";
 
 export default function RegisterForm() {
   const [userName, setUserName] = useState("");
-  const { dispatch } = useUserContext();
+  const { registerAndLogin } = useUserContext();
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const userID = crypto.randomUUID();
-    dispatch({
-      type: "register",
-      payload: { id: userID, userName },
-    });
-    // Auto - Login the user after registering
-    dispatch({
-      type: "login",
-      payload: { id: userID },
-    });
+    registerAndLogin(userName);
     setUserName("");
   };
 

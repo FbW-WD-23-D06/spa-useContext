@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   Action,
   User,
@@ -17,6 +18,9 @@ type Context = {
   userState: UserState;
   dispatch: Dispatch<Action>;
   loggedUser: User | undefined;
+  registerUser: any;
+  registerAndLogin: any;
+  logInUser: any;
 };
 
 const UserContext = createContext<Context | null>(null);
@@ -37,8 +41,38 @@ export function UserContextProvider({ children }: { children: ReactNode }) {
     (user) => user.id === userState.loggedUserID
   );
 
+  const userID = crypto.randomUUID();
+
+  const registerUser = (userName: string) => {
+    dispatch({
+      type: "register",
+      payload: { id: userID, userName },
+    });
+  };
+
+  const logInUser = (userID: string) => {
+    dispatch({
+      type: "login",
+      payload: { id: userID },
+    });
+  };
+
+  const registerAndLogin = (userName: string) => {
+    registerUser(userName);
+    logInUser(userID);
+  };
+
   return (
-    <UserContext.Provider value={{ userState, dispatch, loggedUser }}>
+    <UserContext.Provider
+      value={{
+        userState,
+        dispatch,
+        loggedUser,
+        registerUser,
+        registerAndLogin,
+        logInUser,
+      }}
+    >
       {children}
     </UserContext.Provider>
   );
