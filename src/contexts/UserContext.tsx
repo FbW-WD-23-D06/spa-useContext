@@ -39,8 +39,8 @@ const reducer = (state: UserState, action: Action): UserState => {
           user.id === action.payload.id ? action.payload : user
         ),
       };
-    default:
-      return state;
+    default: throw new Error("Invalid action type");
+      // return state;
   }
 };
 
