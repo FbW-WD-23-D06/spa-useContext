@@ -36,3 +36,6 @@ export const reducer = (state: UserState, action: Action): UserState => {
     // return state;
   }
 };
+
+export const initialUserState = { users: [], loggedUserID: null };
+

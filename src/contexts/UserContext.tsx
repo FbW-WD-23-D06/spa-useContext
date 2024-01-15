@@ -1,4 +1,10 @@
-import { Action, User, UserState, reducer } from "@/features/authentication/userReducer";
+import {
+  Action,
+  User,
+  UserState,
+  initialUserState,
+  reducer,
+} from "@/features/authentication/userReducer";
 import {
   createContext,
   useContext,
@@ -6,28 +12,6 @@ import {
   ReactNode,
   Dispatch,
 } from "react";
-
-
-
-// const reducer = (state: UserState, action: Action): UserState => {
-//   switch (action.type) {
-//     case "register":
-//       return { ...state, users: [...state.users, action.payload] };
-//     case "login":
-//       return { ...state, loggedUserID: action.payload.id };
-//     case "logout":
-//       return { ...state, loggedUserID: null };
-//     case "updateLoggedUser":
-//       return {
-//         ...state,
-//         users: state.users.map((user) =>
-//           user.id === action.payload.id ? action.payload : user
-//         ),
-//       };
-//     default: throw new Error("Invalid action type");
-//       // return state;
-//   }
-// };
 
 type Context = {
   userState: UserState;
@@ -46,12 +30,12 @@ export const useUserContext = () => {
   return context;
 };
 
-const initialState = { users: [], loggedUserID: null };
-
 export function UserContextProvider({ children }: { children: ReactNode }) {
-  const [userState, dispatch] = useReducer(reducer, initialState);
+  const [userState, dispatch] = useReducer(reducer, initialUserState);
 
-  const loggedUser = userState.users.find((user) => user.id === userState.loggedUserID);
+  const loggedUser = userState.users.find(
+    (user) => user.id === userState.loggedUserID
+  );
 
   return (
     <UserContext.Provider value={{ userState, dispatch, loggedUser }}>
