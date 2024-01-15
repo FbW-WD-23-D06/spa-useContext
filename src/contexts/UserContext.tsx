@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   Action,
   User,
@@ -18,9 +17,9 @@ type Context = {
   userState: UserState;
   dispatch: Dispatch<Action>;
   loggedUser: User | undefined;
-  registerUser: any;
-  registerAndLogin: any;
-  logInUser: any;
+  registerUser: (userName: string) => void;
+  registerAndLogin: (userName: string) => void;
+  logInUser: (userID: string) => void;
 };
 
 const UserContext = createContext<Context | null>(null);
