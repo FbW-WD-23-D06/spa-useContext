@@ -14,9 +14,9 @@ export default function Link({ to, name }: LinkProps) {
           case isPending:
             return "text-slate-900";
           case isActive:
-            return "text-red-200";
+            return "text-red-800";
           case isTransitioning:
-            return "text-red-200";
+            return "text-red-500";
           default:
             return "";
         }
